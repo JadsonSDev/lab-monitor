@@ -1,0 +1,32 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:15-alpine
+    container_name: labmonitor_postgres
+    restart: always
+    environment:
+      POSTGRES_USER: jadson
+      POSTGRES_PASSWORD: 753951
+      POSTGRES_DB: labdb
+    ports:
+      - "5433:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+  web:
+    build: .
+    container_name: labmonitor_fastapi
+    restart: always
+    volumes:
+      - .:/app
+    ports:
+      - "8001:8000"
+    environment:
+      - DATABASE_URL=postgresql://jadson:753951@db:5432/labdb
+    depends_on:
+      - db
+
+volumes:
+  pgdata:
+
