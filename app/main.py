@@ -15,4 +15,4 @@ def read_root(db: Session = Depends(get_db)):
         "message": "Laboratório LabMonitor (Porta 8001) está rodando e conectado ao PostgreSQL com sucesso!"
     }
 
-# teste de deploy automatico
+# teste 2
