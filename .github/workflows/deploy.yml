@@ -11,9 +11,7 @@ jobs:
       - name: Checkout do código
         uses: actions/checkout@v4
 
-      - name: Atualizar código e reiniciar containers
+      - name: Subir containers Docker
         run: |
-          cd /home/jadson/lab/backend/lab-monitor
-          git pull origin main
           docker compose pull
           docker compose up -d --build
